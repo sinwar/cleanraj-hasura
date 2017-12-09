@@ -30,7 +30,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='addthing',
             name='rate',
-            field=models.IntegerField(default=' '),
+            field=models.IntegerField(default=0),
         ),
         migrations.AlterField(
             model_name='newnotice',
