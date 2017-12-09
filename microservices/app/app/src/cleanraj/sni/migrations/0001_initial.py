@@ -24,7 +24,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('itemname', models.CharField(default=b' ', max_length=30)),
                 ('details', models.TextField(default=b' ')),
-                ('rate', models.IntegerField(default=b' ')),
+                ('rate', models.IntegerField(default=0)),
                 ('itemimage', models.ImageField(default=b' ', upload_to=b'/home/sinwar/djcode/sni/sni/site_media/media/things/')),
                 ('datetime', models.DateTimeField(default=django.utils.timezone.now)),
             ],
