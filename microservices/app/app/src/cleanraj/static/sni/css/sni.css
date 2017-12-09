@@ -1,0 +1,107 @@
+.home {
+    background-color: white;
+}
+.homesni {
+    padding-top: 5%;
+}
+
+
+
+
+.content button {
+    background-color: white;
+    height: 40px;
+    width: 100px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 5px;
+    margin-top: 5%;
+}
+
+.homesni h2{
+    font-weight: bold;
+    color: #b8e098;
+    font-size: 100px;
+
+}
+
+.loginhome{
+    text-align: center;
+    padding-top: 5%;
+}
+
+.search{
+    font-size: 20px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.search input{
+    width: 100%;
+    padding: 12px 20px;
+    margin-right: 4%;
+    box-sizing: border-box;
+}
+
+tr, td{
+    text-align: center;
+}
+.addbutton a{
+    color: #b8e098;
+    border: #b8e098 solid 5px;
+    padding: 10%;
+}
+
+.notifications{
+    padding-top: 5%;
+    padding-bottom: 5%;
+    margin-top: 2%;
+    border: black solid 1px;
+}
+
+
+.modal{display:none;position:fixed;z-index:1;padding-top:100px;left:0;top:0;width:100%;height:100%;overflow:auto;background-color:rgba(0,0,0,0.7);}
+#caption,.modal-content{
+    margin:auto;
+    display:block;
+    width: 70%;
+    height: 70%;
+    max-width:1200px;
+}
+#caption{text-align:center;color:#ccc;padding:10px 0;height:150px}
+#caption,.modal-content{-webkit-animation-name:zoom;-webkit-animation-duration:.6s;animation-name:zoom;animation-duration:.6s}
+@-webkit-keyframes zoom{
+    from{-webkit-transform:scale(0)}
+    to{-webkit-transform:scale(1)}
+}
+@-moz-keyframes zoom{
+    from{-moz-transform:scale(0)}
+    to{-moz-transform:scale(1)}
+}
+@-o-keyframes zoom{
+    from{-o-transform:scale(0)}
+    to{-o-transform:scale(1)}
+}
+@-ms-keyframes zoom{
+    from{-ms-transform:scale(0)}
+    to{-ms-transform:scale(1)}
+}
+@keyframes zoom{
+    from{transform:scale(0)}
+    to{transform:scale(1)}
+}
+.close{
+    position:absolute;
+    top:50px;right:35px;
+    color:#f1f1f1;
+    font-size:40px;
+    font-weight:300;
+}
+.close:focus,.close:hover{
+    color:#bbb;
+    text-decoration:none;
+    cursor:pointer;
+}
+@media only screen and (max-width:700px){
+    .modal-content{width:100%}
+}
