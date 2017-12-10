@@ -1,0 +1,60 @@
+- args:
+    name: account_account
+  type: add_existing_table_or_view
+- args:
+    name: account_accountdeletion
+  type: add_existing_table_or_view
+- args:
+    name: account_emailaddress
+  type: add_existing_table_or_view
+- args:
+    name: account_emailconfirmation
+  type: add_existing_table_or_view
+- args:
+    name: django_migrations
+  type: add_existing_table_or_view
+- args:
+    name: auth_group_permissions
+  type: add_existing_table_or_view
+- args:
+    name: auth_group
+  type: add_existing_table_or_view
+- args:
+    name: auth_user_groups
+  type: add_existing_table_or_view
+- args:
+    name: auth_permission
+  type: add_existing_table_or_view
+- args:
+    name: auth_user_user_permissions
+  type: add_existing_table_or_view
+- args:
+    name: django_content_type
+  type: add_existing_table_or_view
+- args:
+    name: account_signupcode
+  type: add_existing_table_or_view
+- args:
+    name: django_site
+  type: add_existing_table_or_view
+- args:
+    name: account_signupcoderesult
+  type: add_existing_table_or_view
+- args:
+    name: eventlog_log
+  type: add_existing_table_or_view
+- args:
+    name: django_admin_log
+  type: add_existing_table_or_view
+- args:
+    name: django_session
+  type: add_existing_table_or_view
+- args:
+    name: sni_userprofile
+  type: add_existing_table_or_view
+- args:
+    name: auth_user
+  type: add_existing_table_or_view
+- args:
+    name: sni_location
+  type: add_existing_table_or_view
