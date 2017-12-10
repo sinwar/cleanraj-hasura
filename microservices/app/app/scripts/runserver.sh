@@ -8,7 +8,6 @@ python3 manage.py migrate
 
 # Your commands
 # Eg: python3 manage.py collectstatic --noinput etc
-python manage.py createsuperuser
 
 # DO NOT ADD ANY COMMANDS BELOW THIS LINE
 # Now run the gunicorn server

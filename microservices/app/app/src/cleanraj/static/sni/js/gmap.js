@@ -63,10 +63,10 @@ function initMap()
 
 		    var cords_data = JSON.parse(data);
 
-		    var markers = new Array(40);
-		    var latarray = new Array(40);
-		    var lonarray = new Array(40);
-		    var pkarray = new Array(40);
+		    var markers = new Array(1000);
+		    var latarray = new Array(1000);
+		    var lonarray = new Array(1000);
+		    var pkarray = new Array(1000);
 
 
 			var modal = document.getElementById('myModal');
@@ -116,13 +116,14 @@ function initMap()
 					var latlon = e.latLng;
 					console.log(latlon.lat(), latlon.lng());
 
-					var location_can_be_remove;
+					var location_can_be_remove, index_marker_to_be_deleted;
 					for(var j=0; j<cords_data.length; j++)
 					{
 						if(latarray[j] == latlon.lat() && lonarray[j] == latlon.lng())
 						{
 							modalImg.src = cords_data[j].fields.garbage_pic;
 							location_can_be_remove=pkarray[j];
+							index_marker_to_be_deleted = j;
 							if(captioncontent)
 							{
 								captioncontent.innerHTML = "<button type='button'>REMOVE</button>";									
@@ -139,7 +140,7 @@ function initMap()
 									  }).done(function(data){
 									     modal.style.display = "none";
 									     console.log('deleted');
-									     
+									     markers[index_marker_to_be_deleted].setMap(null);
 								    });
 
 
@@ -151,19 +152,17 @@ function initMap()
 		    }
 
 
-		    console.log(cords_data[0].fields.lat);
 		  });
 
         map.addListener('dblclick', function(e) {
 
         	// open infowindow
-		    placeMarkerAndPanTo(e.latLng, map);
+		    var new_marker = placeMarkerAndPanTo(e.latLng, map);
+
 		});
 
 		function placeMarkerAndPanTo(latLng, map) {
 
-			// open camera division, capture image, send the path in ajax to store
-		  //Webcam.attach('#my_camera');
 
 		  var marker = new google.maps.Marker({
 		    position: latLng,
@@ -174,23 +173,26 @@ function initMap()
 
           infowindow_new.open(map, marker);
 
-          //map.panTo(latLng);
+          
 		  console.log(latLng.lat(), latLng.lng());
 
 		  const fileInput = document.getElementById('file-input');
 
+		  
+
 		  fileInput.addEventListener('change', (e) => {
 		  	file = e.target.files[0];
-		  	console.log(file);
+		  	console.log(file.name);
 		  	
 		  	
 
 		  	var reader = new window.FileReader();	
 		  	reader.readAsDataURL(file); 
 		  	
+		  	
 			reader.onloadend = function() {
                 base64data = reader.result;                
-                console.log(base64data);
+                //console.log(base64data);
 
                 $.ajax({
 				    url: "/savecords/",
@@ -198,15 +200,36 @@ function initMap()
 				    data: {lan:latLng.lat(),lon:latLng.lng(), image:base64data}
 				  }).done(function(data){
 			     //alert(data);
-			     console.log('cords stored');
-			    });
-  			} 
- 			//console.log(reader.result)
- 			infowindow_new.close();
+				     marker.addListener('click', function(){
 
+				     	var modal = document.getElementById('myModal');
+				     	modal.style.display = "block";
+
+						parentDOM = document.getElementById('myModal');
+						span = parentDOM.getElementsByClassName('close')[0];
+
+						var modalImg = document.getElementById("img01");
+						modalImg.src=base64data;
+
+						var captioncontent = document.getElementById("caption");
+
+						
+						
+
+						// When the user clicks on <span> (x), close the modal
+						span.onclick = function() {
+							var modal = document.getElementById('myModal');
+							modal.style.display = "none";
+						}
+			     });
+			     console.log(data);
+			    });
+  			}
+
+ 			infowindow_new.close();
 			  
 		  });
-		  
+		  return marker;
 		}
 		
 
