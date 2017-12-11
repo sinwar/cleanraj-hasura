@@ -1,0 +1,31 @@
+{% extends "sni/base.html" %}
+{% load bootstrap %}
+{% load i18n %}
+
+{% block body %}
+
+	<div class="row">
+	     <div class="col-md-3 col-md-offset-9 supportbutton">
+	         <a href="{% url 'add_suggestion' %}"><button class='button btn-warning btn-lg'>Add your view.</button></a>
+	     </div>
+	 </div>
+	<div class="row" style="margin-top: 10px;">
+		
+			{% for suggestion in suggestionlist %}
+				<div class="col-md-5" style="background-color: #efdabd; padding: 
+				5%; margin: 2%; border-style:solid; border-radius: 5px;">
+					
+					<h2 style="font-family: fantasy; font-weight: 100, line-height: 0.3;">{{ suggestion.content }}</h2>
+					<br>
+					<h4> - {{ suggestion.writer }}</h4>
+				</div>
+			{% endfor %}
+		
+	</div>
+{% endblock %}
+
+{% block scripts %}
+	<script type="text/javascript">
+		console.log("suggestions loaded");
+	</script>
+{% endblock %}

@@ -31,7 +31,7 @@ from django.shortcuts import redirect, get_object_or_404, render_to_response, re
 from django.views.generic import TemplateView, DetailView
 from django.views.generic.edit import FormView, CreateView
 import account.views
-from .forms import SignupForm
+from .forms import SignupForm, SuggestionForm
 from .models import UserProfile, location
 from account.conf import settings
 
@@ -39,6 +39,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import JsonResponse
 from base64 import b64encode, b64decode
+import requests
 
 # signup view overwrided
 class SignupView(account.views.SignupView):
@@ -137,3 +138,61 @@ def remove_location(request):
         'Success': 'success'
     }
     return JsonResponse(data)
+
+# view to load suggestions and use hasura data api for the same
+
+def load_suggestions(request):
+
+    request_json = {
+            "type": "select",
+            "args": {
+                "table": "suggestions",
+                "columns": [
+                    "*"
+                ]
+            }
+        }
+
+    response = requests.post('https://data.anathema47.hasura-app.io/v1/query', json=request_json)
+
+    return render(request, 'sni/suggestions.html', {'suggestionlist':response.json()})
+
+# view to add suggestion using hasura api
+def add_suggestion(request):
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = SuggestionForm(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            # save the suggestion in the using hasura data api
+            suggestion = form.cleaned_data['suggestion']
+            # print(suggestion)
+            # print("===============================")
+            # print(request.user)
+            
+
+            # redirect to suggestions page
+
+            myheaders = {'Authorization': 'Bearer 2195e500ec67301b610b399cf33b958197f8a1a61ca2063b'}
+
+            suggestioncontent = {
+                "type": "insert",
+                "args": {
+                    "table": "suggestions",
+                    "objects": [
+                        {
+                            "writer": request.user.username,
+                            "content": suggestion
+                        }
+                    ]
+                }
+            }
+
+            response = requests.post('https://data.anathema47.hasura-app.io/v1/query', json=suggestioncontent, headers=myheaders)
+            return redirect('sni.views.load_suggestions')
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        form = SuggestionForm()
+
+    return render(request, 'sni/add_suggestion.html', {'form': form})    

@@ -8,22 +8,23 @@ BASE_DIR = PACKAGE_ROOT
 DEBUG = True
 
 
-'''
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": "dev.db",
     }
 }
-'''
+
 
 # for hasura
+'''
 import dj_database_url
 password = os.environ.get('POSTGRES_PASSWORD', '')
 DATABASES = {
     "default": dj_database_url.parse('postgres://admin:'+password+'@postgres.hasura:5432/hasuradb')
 }
-
+'''
 ALLOWED_HOSTS = []
 
 # Local time zone for this installation. Choices can be found here:

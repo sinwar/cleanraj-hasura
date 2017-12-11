@@ -21,6 +21,8 @@ urlpatterns = [
     url(r'^showcords/$', show_garbage_points, name='show_garbage_points'),
     url(r'^localadmin/$', show_garbage_locations, name='show_garbage_locations'),
     url(r'^removelocation/$', remove_location, name='remove_location'),
+    url(r'^suggestions/$', load_suggestions, name='load_suggestions'),
+    url(r'^addsuggestion/$', add_suggestion, name='add_suggestion'),
     url(r"^account/", include("account.urls")),
 ]
 

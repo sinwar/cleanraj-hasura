@@ -1,12 +1,10 @@
+
 .home {
     background-color: white;
 }
 .homesni {
     padding-top: 5%;
 }
-
-
-
 
 .content button {
     background-color: white;
@@ -41,6 +39,15 @@
     padding: 12px 20px;
     margin-right: 4%;
     box-sizing: border-box;
+}
+
+
+.supportbutton
+{
+    font-weight: bold;
+    padding-bottom: 3%;
+    text-align: right;
+    color: white;
 }
 
 tr, td{

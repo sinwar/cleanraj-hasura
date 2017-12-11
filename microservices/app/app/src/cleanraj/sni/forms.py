@@ -40,3 +40,7 @@ class SignupForm(account.forms.SignupForm):
             raise forms.ValidationError(_("Last name can only contain letters, numbers and underscores."))
 
         return last_name
+
+
+class SuggestionForm(forms.Form):
+    suggestion = forms.CharField(widget=forms.Textarea)
