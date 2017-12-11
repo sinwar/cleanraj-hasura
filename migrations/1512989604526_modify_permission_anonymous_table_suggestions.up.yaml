@@ -1,0 +1,10 @@
+- args:
+    permission:
+      columns:
+      - writer
+      - id
+      - content
+      filter: {}
+    role: anonymous
+    table: suggestions
+  type: create_select_permission

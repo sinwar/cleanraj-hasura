@@ -22,3 +22,5 @@ six==1.10.0
 static3==0.7.0
 urllib3==1.19.1
 requests==2.18.4
+chardet==3.0.4
+idna==2.6
