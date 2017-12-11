@@ -15,9 +15,11 @@
 			<img src="/site_media/media/cleanind.png" class="img-responsive">
 		</div>
 		<div class="col-md-6" style="text-align: center; text-transform: uppercase;">
-			<h2>{% trans "username" %} - {{ user }}</h2>
-			<h2>{% trans "first name" %} - {{ user.first_name }} </h2>
-			<h2>{% trans "last name" %} - {{ user.last_name }}</h2>
+			
+				<h2>{% trans "username" %} - {{ user }}</h2>
+				<h2>{% trans "first name" %} - {{ user.first_name }} </h2>
+				<h2>{% trans "last name" %} - {{ user.last_name }}</h2>
+			
 		</div>
     </div>
 {% endblock %}
