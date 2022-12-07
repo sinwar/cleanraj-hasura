@@ -1,6 +1,6 @@
 psycopg2==2.7.3
 appdirs==1.4.3
-certifi==2016.9.26
+certifi==2022.12.7
 dj-static==0.0.6
 dj-database-url
 Django==1.9.5
